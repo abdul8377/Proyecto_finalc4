@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Dashboard\Main;
+use App\Livewire\ProductMain;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,7 +13,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard',Main::class)->name('dashboard');
+    Route::get('/products',ProductMain::class)->name('products');
 });

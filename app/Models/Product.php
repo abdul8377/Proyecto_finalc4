@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $guarded=['id'];
     use HasFactory;
      // Relación de muchos a uno con Categorias
      public function category()

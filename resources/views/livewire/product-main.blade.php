@@ -6,11 +6,24 @@
     </x-slot>
     <div class="mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between dark:text-gray-400 gap-4 mb-2">
-            <x-input icon="trash" placeholder="Buscar registro" wire:model.live="search" />
+            <div>
+            <x-input placeholder="Buscar registro" wire:model.live="search" />
+                <x-slot name="prepend">
+                    <x-button
+                        class="h-full"
+                        icon="bars-arrow-up"
+                        rounded="rounded-l-md"
+                        primary
+                        flat
+                    />
+                </x-slot>
+            </div>
+            <div>
             <x-button wire:click="create()" spinner="create" icon="plus" primary label="Nuevo"/>
                 @if($isOpen)
                     @include('livewire.product-create')
                 @endif
+            </div>
         </div>
 
         <!--Tabla lista de items   -->

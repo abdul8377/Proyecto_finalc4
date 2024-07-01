@@ -10,7 +10,9 @@
 </head>
 <body>
 
-
+    <div class="sticky top-0 z-50">
+        @livewire('navigation-livewire')
+    </div>
 
     <h1>Products in Category {{ $category->name }}</h1>
     <ul>

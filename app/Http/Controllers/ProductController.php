@@ -43,6 +43,6 @@ class ProductController extends Controller
         $category = Category::findOrFail($category_id);
         $products = Product::where('category_id', $category_id)->paginate(6);
 
-        return view('products.byCategory', compact('products', 'category'));
+        return view('productsbyCategory.byCategory', compact('products', 'category'));
     }
 }

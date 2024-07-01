@@ -7,7 +7,7 @@
     <div class="mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between dark:text-gray-400 gap-4 mb-2">
             <div>
-            <x-input placeholder="Buscar registro" wire:model.live="search" />
+                <x-input placeholder="Buscar registro" wire:model.live="search" />
                 <x-slot name="prepend">
                     <x-button
                         class="h-full"
@@ -19,10 +19,12 @@
                 </x-slot>
             </div>
             <div>
-            <x-button wire:click="create()" spinner="create" icon="plus" primary label="Nuevo"/>
-                @if($isOpen)
-                    @include('livewire.customer-create')
-                @endif
+                <x-button href="{{ route('customerspdf') }}" icon="document-minus" target="_blank" label="PDF"
+                    teal />
+                <x-button wire:click="create()" spinner="create" icon="plus" primary label="Nuevo"/>
+                    @if($isOpen)
+                        @include('livewire.customer-create')
+                 @endif
             </div>
         </div>
 

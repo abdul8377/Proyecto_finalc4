@@ -10,6 +10,7 @@ use App\Livewire\ProductMain;
 use App\Livewire\ProductsByCategory;
 use App\Livewire\ProductsByCategoryLivewire;
 use App\Models\Category;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -26,6 +27,9 @@ Route::middleware([
     Route::get('/products', ProductMain::class)->name('products');
     Route::get('/categorias',CategoryMain::class)->name('categorias');
     Route::get('/clientes',CustomerMain::class)->name('clientes');
+    Route::get('/productpdf',[ProductMain::class,'reportePDF'])->name('productspdf');
+    Route::get('/customerpdf',[CustomerMain::class,'reportePDF'])->name('customerspdf');
+    Route::get('/categorypdf',[CategoryMain::class,'reportePDF'])->name('categoriespdf');
 });
 Route::get('/', [IndexLivewire::class, 'render'])->name('index');
 Route::get('/categories/{categoryId}/products', [ProductController::class, 'productsByCategory'])->name('products.byCategory');

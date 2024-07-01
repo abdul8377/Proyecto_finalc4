@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Product_detail;
 use App\Models\Season;
 use App\Models\Supplier;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -125,5 +126,12 @@ class ProductMain extends Component{
 
     public function updatingSearch(){
         $this->resetPage();
+    }
+
+    public function reportePDF(){
+        $products=Product::all();
+        $pdf = Pdf::loadView('reports.productspdf',compact('products'));
+        //return $pdf->download('reporte.pdf');
+        return $pdf->stream();
     }
 }

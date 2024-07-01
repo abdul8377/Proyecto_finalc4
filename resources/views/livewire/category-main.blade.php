@@ -19,6 +19,8 @@
                 </x-slot>
             </div>
             <div>
+            <x-button href="{{ route('categoriespdf') }}" icon="document-minus" target="_blank" label="PDF"
+                    teal />
             <x-button wire:click="create()" spinner="create" icon="plus" primary label="Nuevo"/>
                 @if($isOpen)
                     @include('livewire.category-create')
@@ -49,7 +51,7 @@
                     <img src="{{($item->image)?'../../storage/'.$item->image->url:'img/sinfoto.png'}} " class="w-10">
                   </td>
                   <td class="px-6 py-4 dark:text-gray-200">{{$item->name}}</td>
-                  <td class="px-6 py-4 text-right">
+                  <td class="px-6 py-4 text-center">
                     <x-mini-button rounded wire:click="edit({{$item}})" primary icon="pencil" />
                     <x-mini-button rounded negative icon="trash" x-on:confirm="{
                         title: 'Seguro que deseas eliminar?',

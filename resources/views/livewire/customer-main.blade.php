@@ -1,7 +1,7 @@
 <div class="py-5">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-600 leading-tight">
-            Plantel
+            Clientes
         </h2>
     </x-slot>
     <div class="mx-auto sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@
             <div>
             <x-button wire:click="create()" spinner="create" icon="plus" primary label="Nuevo"/>
                 @if($isOpen)
-                    @include('livewire.product-create')
+                    @include('livewire.customer-create')
                 @endif
             </div>
         </div>
@@ -32,32 +32,31 @@
               <thead class="bg-indigo-500 text-white">
                 <tr class="text-left text-xs font-bold  uppercase">
                   <td scope="col" class="px-6 py-3">ID</td>
-                  <td scope="col" class="px-6 py-3">foto</td>
                   <td scope="col" class="px-6 py-3">Nombre</td>
-                  <td scope="col" class="px-6 py-3">precio</td>
-                  <td scope="col" class="px-6 py-3">stock</td>
-                  <td scope="col" class="px-6 py-3">categoria</td>
-                  <td scope="col" class="px-6 py-3">proveedor</td>
+                  <td scope="col" class="px-6 py-3">Apellido</td>
+                  <td scope="col" class="px-6 py-3">DNI</td>
+                  <td scope="col" class="px-6 py-3">email</td>
+                  <td scope="col" class="px-6 py-3">Phone</td>
+                  <td scope="col" class="px-6 py-3">Address</td>
                   <td scope="col" class="px-6 py-3 text-center">Opciones</td>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 dark:text-gray-400">
-                @foreach($products as $item)
+                @foreach($customers as $item)
                 <tr class="text-sm font-medium text-gray-900">
                   <td class="px-6 py-4">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-500 text-white">
                       {{$item->id}}
                     </span>
                   </td>
-                  <td class="px-6 py-4 dark:text-gray-200">
-                    <img src="{{($item->image)?'../../storage/'.$item->image->url:'img/sinfoto.png'}} " class="w-10">
-                  </td>
+
                   <td class="px-6 py-4 dark:text-gray-200">{{$item->name}}</td>
-                  <td class="px-6 py-4 dark:text-gray-200">{{$item->price}}</td>
-                  <td class="px-6 py-4 dark:text-gray-200">{{$item->stock}}</td>
-                  <td class="px-6 py-4 dark:text-gray-200">{{$item->category->name}}</td>
-                  <td class="px-6 py-4 dark:text-gray-200">{{$item->supplier->name}}</td>
-                  <td class="px-6 py-4 text-center">
+                  <td class="px-6 py-4 dark:text-gray-200">{{$item->lastname}}</td>
+                  <td class="px-6 py-4 dark:text-gray-200">{{$item->dni}}</td>
+                  <td class="px-6 py-4 dark:text-gray-200">{{$item->email}}</td>
+                  <td class="px-6 py-4 dark:text-gray-200">{{$item->phone}}</td>
+                  <td class="px-6 py-4 dark:text-gray-200">{{$item->address}}</td>
+                  <td class="px-6 py-4 text-right">
                     <x-mini-button rounded wire:click="edit({{$item}})" primary icon="pencil" />
                     <x-mini-button rounded negative icon="trash" x-on:confirm="{
                         title: 'Seguro que deseas eliminar?',
@@ -66,22 +65,22 @@
                         params: {{$item}}
                     }"
                     />
-
                   </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
         </div>
-        @if(!$products->count())
+        @if(!$customers->count())
             <p class="dark:text-gray-200">No existe ningun registro conincidente</p>
         @endif
-        @if($products->hasPages())
+        @if($customers->hasPages())
         <div class="px-6 py-3">
-            {{$products->links()}}
+            {{$customers->links()}}
         </div>
         @endif
 
         </div>
       </div>
 </div>
+

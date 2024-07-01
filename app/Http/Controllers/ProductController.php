@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -36,5 +37,12 @@ class ProductController extends Controller
         return response()->json([
             'message'=>"Registro eliminado satisfactoriamente"
         ],Response::HTTP_OK);
+    }
+    public function productsByCategory($category_id)
+    {
+        $category = Category::findOrFail($category_id);
+        $products = Product::where('category_id', $category_id)->paginate(6);
+
+        return view('products.byCategory', compact('products', 'category'));
     }
 }

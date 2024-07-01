@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Vaucher_detail;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,7 +27,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-
+        Storage::makeDirectory('posts');
+        $this->call(UserSeeder::class);
         Customer::factory(20)->create();
         $this->call(CategorySeeder::class);
         Supplier::factory(7)->create();

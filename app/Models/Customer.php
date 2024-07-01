@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    protected $guarded=['id'];
     use HasFactory;
      // Relación de uno a muchos con ComprobantesDePago
      public function payment_proofs()

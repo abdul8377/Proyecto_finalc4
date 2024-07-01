@@ -21,6 +21,14 @@ class Product extends Model
          return $this->belongsTo(Supplier::class);
      }
 
+     public function scopeCategory($query, $categoryId)
+    {
+        if ($categoryId) {
+            return $query->where('category_id', $categoryId);
+        }
+        return $query;
+    }
+
      // Relación con DetalleProductos
      public function product_details()
      {
@@ -32,4 +40,8 @@ class Product extends Model
      {
          return $this->hasMany(Vaucher_detail::class);
      }
+
+     public function image(){
+        return $this->morphOne(Image::class,'imageable');
+    }
 }

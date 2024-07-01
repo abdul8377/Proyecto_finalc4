@@ -10,18 +10,21 @@ use App\Models\Product;
 use App\Models\Product_detail;
 use App\Models\Season;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use WireUi\Traits\WireUiActions;
 
 class ProductMain extends Component{
     use WithPagination;
     use WireUiActions;
+    use WithFileUploads;
     public $isOpen=false;
     public $position_id;
     public ?Product $product;
     public ProductForm $form;
-    public $search;
+    public $search,$foto;
 
     // public function mount($id){
     //     $this->position_id=$id;
@@ -38,7 +41,7 @@ class ProductMain extends Component{
     public function create(){
         $this->isOpen=true;
         $this->form->reset();
-        $this->reset(['product']);
+        $this->reset(['product','foto']);
         $this->resetValidation();
         //$this->form->mount($this->supplier_id);
     }
@@ -53,6 +56,11 @@ class ProductMain extends Component{
                 'description' => $detail->descrition,
                 'other_detail' => $detail->other_detail,
             ]);
+        }
+        if(isset($product->image->url)){
+            $this->foto=$product->image->url;
+        }else{
+            $this->foto='../../img/sinfoto.png';
         }
         $this->isOpen = true;
         $this->resetValidation();
@@ -69,6 +77,10 @@ class ProductMain extends Component{
                 'description' => $this->form->description,
                 'other_detail' => $this->form->other_detail,
             ]);
+            if($this->foto){
+                $url=$this->foto->store('product','public');
+                $product->image()->create(['url'=>$url]);
+            }
             $this->dialog()->success(
                 $title = 'Mensaje del sistema',
                 $description = 'Registro creado'
@@ -89,6 +101,15 @@ class ProductMain extends Component{
                     'description' => $this->form->description,
                     'other_detail' => $this->form->other_detail,
                 ]);
+            }
+            if(is_object($this->foto)){
+                $url=$this->foto->store('product','public');
+                if($this->product->image){
+                    Storage::delete($this->product->image->url);
+                    $this->product->iamage()->update(['url'=>$url]);
+                }else{
+                    $this->product->image()->create(['url'=>$url]);
+                }
             }
             $this->dialog()->success(
                 $title = 'Mensaje del sistema',

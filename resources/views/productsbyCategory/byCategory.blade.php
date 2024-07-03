@@ -6,7 +6,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
-   <!-- Styles -->
 </head>
 <body>
 
@@ -58,9 +57,13 @@
                                 <input type="text" id="quantity-{{ $product->id }}" class="w-16 text-center border rounded" value="1">
                                 <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300" onclick="increaseQuantity({{ $product->id }})">+</button>
                             </div>
+<<<<<<< HEAD
                             <button wire:click="agregarProducto({{$product->id}})" class="bg-indigo-600 w-full text-white px-4 py-2 rounded-md hover:bg-indigo-400">
                                 <i class="fa-solid fa-cart-arrow-down text-yellow-400"></i> Agregar
                             </button>
+=======
+                            <button class="mt-4 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded hover:bg-yellow-600 transition-colors duration-300">Add to Cart</button>
+>>>>>>> rama_index
                         </div>
                     </div>
                 @endforeach
@@ -78,20 +81,32 @@
 
     <script>
         function increaseQuantity(productId) {
+<<<<<<< HEAD
             const quantityInput = document.getElementById(quantity-${productId});
+=======
+            const quantityInput = document.getElementById(`quantity-${productId}`);
+>>>>>>> rama_index
             let quantity = parseInt(quantityInput.value);
             quantityInput.value = quantity + 1;
         }
 
         function decreaseQuantity(productId) {
+<<<<<<< HEAD
             const quantityInput = document.getElementById(quantity-${productId});
+=======
+            const quantityInput = document.getElementById(`quantity-${productId}`);
+>>>>>>> rama_index
             let quantity = parseInt(quantityInput.value);
             if (quantity > 1) {
                 quantityInput.value = quantity - 1;
             }
         }
     </script>
+<<<<<<< HEAD
     @stack('modals')
     @stack('js')
+=======
+
+>>>>>>> rama_index
 </body>
 </html>

@@ -12,6 +12,7 @@
                     <x-button class="h-full" icon="bars-arrow-up" rounded="rounded-l-md" primary flat />
                 </x-slot>
             </div>
+            @can('Crear productos')
             <div>
                 <x-button href="{{ route('productspdf') }}" icon="document-minus" target="_blank" label="PDF"
                     teal />
@@ -20,6 +21,7 @@
                     @include('livewire.product-create')
                 @endif
             </div>
+            @endcan
         </div>
 
         <!--Tabla lista de items   -->

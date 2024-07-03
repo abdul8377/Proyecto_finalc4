@@ -13,6 +13,7 @@ use App\Livewire\IndexLivewire;
 use App\Livewire\ProductMain;
 use App\Livewire\ProductsByCategory;
 use App\Livewire\ProductsByCategoryLivewire;
+use App\Livewire\SupplierMain;
 use App\Livewire\Web\PaymentManagement;
 use App\Livewire\Web\Producshow;
 use App\Models\Category;
@@ -34,6 +35,7 @@ Route::middleware([
     Route::get('/categorias',CategoryMain::class)->name('categorias');
     Route::get('/clientes',CustomerMain::class)->name('clientes');
     Route::get('/empleados',EmployeeMain::class)->name('empleados');
+    Route::get('/suppliers',SupplierMain::class)->name('supplier');
     Route::get('/roles',RoleManagement::class)->name('roles');
     Route::get('/users',UserManagement::class)->name('user');
 

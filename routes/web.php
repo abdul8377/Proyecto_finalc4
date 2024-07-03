@@ -10,6 +10,8 @@ use App\Livewire\IndexLivewire;
 use App\Livewire\ProductMain;
 use App\Livewire\ProductsByCategory;
 use App\Livewire\ProductsByCategoryLivewire;
+use App\Livewire\Web\PaymentManagement;
+use App\Livewire\Web\Producshow;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +39,5 @@ Route::middleware([
 });
 Route::get('/', [IndexLivewire::class, 'render'])->name('index');
 Route::get('/categories/{categoryId}/products', [ProductController::class, 'productsByCategory'])->name('products.byCategory');
+Route::get('/productos/{product}',Producshow::class)->name('product.show');
+Route::get('/checkout',PaymentManagement::class)->name('checkout');

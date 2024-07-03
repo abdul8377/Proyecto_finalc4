@@ -84,7 +84,7 @@ class CategoryMain extends Component{
                 $url=$this->foto->store('category','public');
                 if($this->category->image){
                     Storage::delete($this->category->image->url);
-                    $this->category->iamage()->update(['url'=>$url]);
+                    $this->category->image()->update(['url'=>$url]);
                 }else{
                     $this->category->image()->create(['url'=>$url]);
                 }

@@ -1,7 +1,7 @@
 <div class="py-5">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-600 leading-tight">
-            Plantel
+            Productos
         </h2>
     </x-slot>
     <div class="mx-auto sm:px-6 lg:px-8">
@@ -56,7 +56,10 @@
                             <td class="px-6 py-4 dark:text-gray-200">{{ $item->category->name }}</td>
                             <td class="px-6 py-4 dark:text-gray-200">{{ $item->supplier->name }}</td>
                             <td class="px-6 py-4 text-center">
+                                @can('Editar productos')
                                 <x-mini-button rounded wire:click="edit({{ $item }})" primary icon="pencil" />
+                                @endcan
+                                @can('Eliminar productos')
                                 <x-mini-button rounded negative icon="trash"
                                     x-on:confirm="{
                         title: 'Seguro que deseas eliminar?',
@@ -64,6 +67,7 @@
                         method: 'destroy',
                         params: {{ $item }}
                     }" />
+                    @endcan
 
                             </td>
                         </tr>

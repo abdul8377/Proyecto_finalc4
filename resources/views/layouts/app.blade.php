@@ -28,7 +28,7 @@
                 @livewire('dashboard.sidebar')
                 <div class="flex flex-col flex-1 overflow-hidden">
                     @livewire('dashboard.header')
-                    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-500">
                         <div class="py-8 mx-auto">
                             {{ $slot }}
                         </div>

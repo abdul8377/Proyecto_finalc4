@@ -4,7 +4,7 @@
     <div class="mt-4 mx-4">
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
             <div class="w-full">
-                <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                <div class="flex items-center px-5 py-6 bg-gray-500 rounded-md shadow-sm">
                     <div class="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
                         <svg class="w-8 h-8 text-white" viewBox="0 0 28 30" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

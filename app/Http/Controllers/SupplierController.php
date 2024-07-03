@@ -19,7 +19,7 @@ class SupplierController extends Controller
         $suppiler = Supplier::create($request->all());
         return response()->json([
             'message' => "Registro creado satisfactoriamente",
-            'employee' => $suppiler
+            'suppiler' => $suppiler
         ], Response::HTTP_CREATED);
     }
 
@@ -29,7 +29,7 @@ class SupplierController extends Controller
         $suppiler->update($request->only('name', 'contact', 'phone', 'email')); // Ajusta los campos según tu modelo Employee
         return response()->json([
             'message' => "Registro actualizado satisfactoriamente",
-            'employee' => $suppiler
+            'suppiler' => $suppiler
         ], Response::HTTP_OK);
     }
 
